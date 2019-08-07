@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -92,6 +93,12 @@ public class TestController {
         writer.flush();
         writer.close();
         return "success";
+    }
+
+    @RequestMapping(value = "toModel")
+    public ModelAndView toModelMessage() {
+        ModelAndView modelAndView = new ModelAndView("modelMessage");
+        return modelAndView;
     }
 
 }

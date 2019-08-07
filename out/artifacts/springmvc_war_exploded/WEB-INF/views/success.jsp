@@ -6,24 +6,26 @@
 </head>
 <body>
 <%--解决路径重复问题--%>
-<%--<%--%>
-<%--    String path = request.getContextPath();--%>
-<%--    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";--%>
-<%--%>--%>
-<%--<% request.setCharacterEncoding("utf-8");%>--%>
-<%--<% response.setCharacterEncoding("utf-8");%>--%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
 <h2> hello spring mvc</h2>
+<a href="toModel"> 跳转到modelMessage页面</a>
 <a href="index">访问controller类中index method</a>
 <a href="first?username=vecher&age=24">访问controller类中带参数index方法</a>
+<%--校验请求参数 与上一个形成对比--%>
 <form action="first" method="post">
     <button type="submit">访问test方法</button>
 </form>
 <br>
-<a href="emp/selectAll">访问empController类中method</a>
+<%--前端添加/防止路径重复问题--%>
+<a href="/emp/selectAll">访问empController类中method</a>
 <br>
-<a href="dept/selectAll">访问deptController类中method</a>
+<a href="/dept/selectAll">访问deptController类中method</a>
 <br>
-<a href="testVariable/100">访问testVariable method</a><br>
+<a href="/testVariable/100">访问testVariable method</a><br>
 <h2>多参数传递</h2>
 <form action="testLogin" method="post">
     <p> UserName:<input type="text" name="username"></p>
@@ -35,7 +37,8 @@
 
 </form>
 <h2> pojo 验证</h2>
-<form action="addEmp" method="post">
+
+<form action="/emp/addEmp" method="post">
     <p> 员工编号：<input type="text" name="empId"></p>
     <p> 员工姓名：<input type="text" name="empName"></p>
     <p> 员工工资：<input type="text" name="empSalary"></p>
@@ -55,13 +58,6 @@
     <button type="submit"> Submit</button>
     <button type="reset"> Reset</button>
 </p>
-</form>
-<h2> ModelAndView</h2>
-<form action="/findEmp" method="post">
-
-    <p>请输入员工编号:<input  type="text" name="empId"></p>
-    <button type="submit"> 查询</button>
-    </p>
 </form>
 
 </body>
